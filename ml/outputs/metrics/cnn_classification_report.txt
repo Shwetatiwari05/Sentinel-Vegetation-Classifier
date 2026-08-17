@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+     Non-Veg       0.75      0.83      0.79       302
+       Grass       0.74      0.57      0.64       329
+        Tree       0.80      0.90      0.85       355
+
+    accuracy                           0.77       986
+   macro avg       0.76      0.77      0.76       986
+weighted avg       0.77      0.77      0.76       986

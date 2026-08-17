@@ -1,0 +1,23 @@
+{
+    "accuracy": 0.7688,
+    "f1_macro": 0.7599,
+    "precision_macro": 0.764,
+    "recall_macro": 0.7669,
+    "per_class": {
+        "Non-Veg": {
+            "precision": 0.7493,
+            "recall": 0.8311,
+            "f1": 0.7881
+        },
+        "Grass": {
+            "precision": 0.7381,
+            "recall": 0.5653,
+            "f1": 0.6403
+        },
+        "Tree": {
+            "precision": 0.8045,
+            "recall": 0.9042,
+            "f1": 0.8515
+        }
+    }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel Grass Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <h1>Satellite Grass Classifier</h1>
+        <p class="subtitle">Powered by Google Earth Engine & Random Forest ML</p>
+        
+        <form id="predictionForm">
+            <div id="map" class="map-selector"></div>
+            <p class="map-instruction">Click on the map to select a location</p>
+            
+            <div class="row">
+                <div class="input-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" id="latitude" placeholder="Select on map" readonly required>
+                </div>
+                <div class="input-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" id="longitude" placeholder="Select on map" readonly required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-group">
+                    <label for="date_start">Start Date</label>
+                    <input type="date" id="date_start" value="2024-05-01" required>
+                </div>
+                <div class="input-group">
+                    <label for="date_end">End Date</label>
+                    <input type="date" id="date_end" value="2024-05-30" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="model_type">Machine Learning Model:</label>
+                <select id="model_type" name="model_type">
+                    <option value="random_forest" selected>Random Forest (Ensemble)</option>
+                    <option value="cnn_2d">2D CNN (Patch-based Deep Learning)</option>
+                    <option value="svm">Support Vector Machine (SVM)</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                <span id="btnText">Analyze Terrain</span>
+                <div id="loadingSpinner" class="spinner hidden"></div>
+            </button>
+        </form>
+
+        <div id="resultsPanel" class="results-panel hidden">
+            <h2>Analysis Results</h2>
+            <div class="results-grid">
+                <div class="stat-box">
+                    <h3>Classification</h3>
+                    <p id="resPrediction" class="highlight">--</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Confidence</h3>
+                    <p id="resConfidence">--%</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Grass Cover</h3>
+                    <p id="resPercentage">--%</p>
+                </div>
+                <div class="stat-box">
+                    <h3>NDVI Mean</h3>
+                    <p id="resNdvi">--</p>
+                </div>
+            </div>
+            
+            <div class="maps-container">
+                <div class="map-box">
+                    <h3>ML Prediction Mask</h3>
+                    <img id="resMap" src="" alt="ML Prediction Map">
+                </div>
+                <div class="map-box">
+                    <h3>Raw NDVI Thumbnail</h3>
+                    <img id="resNdviMap" src="" alt="Raw NDVI Map">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="app.js"></script>
+</body>
+</html>
